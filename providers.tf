@@ -10,7 +10,7 @@ terraform {
     organization = "brandious"
 
     workspaces {
-      name = "aws_integration"
+      name = "aws-nextjs"
     }
   }
 }
