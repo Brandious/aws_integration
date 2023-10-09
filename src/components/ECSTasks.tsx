@@ -2,7 +2,7 @@ import * as React from "react";
 import TaskCard from "./TaskCard";
 
 export default async function ECSTasks() {
-  const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "localhost:8080";
+  const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:8080";
 
   const data = await fetch(`${BASE_URL}/api/awsservice`, { cache: "no-cache" });
   if (!data.ok) {
