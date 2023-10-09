@@ -26,13 +26,13 @@ resource "aws_default_subnet" "subnet_us_east_1c" {
 #   }
 # }
 
-resource "aws_route53_record" "ssl_cert_validation_record" {
-  zone_id = var.hosted_zone_id
-  name    = tolist(aws_acm_certificate.ssl_cert.domain_validation_options)[0].resource_record_name
-  type    = tolist(aws_acm_certificate.ssl_cert.domain_validation_options)[0].resource_record_type
-  records = [tolist(aws_acm_certificate.ssl_cert.domain_validation_options)[0].resource_record_value]
-  ttl     = 60
-}
+# resource "aws_route53_record" "ssl_cert_validation_record" {
+#   zone_id = var.hosted_zone_id
+#   name    = tolist(aws_acm_certificate.ssl_cert.domain_validation_options)[0].resource_record_name
+#   type    = tolist(aws_acm_certificate.ssl_cert.domain_validation_options)[0].resource_record_type
+#   records = [tolist(aws_acm_certificate.ssl_cert.domain_validation_options)[0].resource_record_value]
+#   ttl     = 60
+# }
 
 # resource "aws_acm_certificate_validation" "ssl_cert_validation" {
 #   certificate_arn         = aws_acm_certificate.ssl_cert.arn
@@ -137,18 +137,18 @@ resource "aws_lb_target_group" "nextjs_tg" {
   vpc_id      = aws_default_vpc.main_vpc.id
 }
 
-resource "aws_lb_listener" "https_listener" {
-  load_balancer_arn = aws_alb.nextjs_alb.arn
-  port              = 443
-  protocol          = "HTTPS"
-  ssl_policy        = "ELBSecurityPolicy-2016-08"
-  certificate_arn   = aws_acm_certificate_validation.ssl_cert_validation.certificate_arn
+# resource "aws_lb_listener" "https_listener" {
+#   load_balancer_arn = aws_alb.nextjs_alb.arn
+#   port              = 443
+#   protocol          = "HTTPS"
+#   ssl_policy        = "ELBSecurityPolicy-2016-08"
+#   certificate_arn   = aws_acm_certificate_validation.ssl_cert_validation.certificate_arn
 
-  default_action {
-    type             = "forward"
-    target_group_arn = aws_lb_target_group.nextjs_tg.arn
-  }
-}
+#   default_action {
+#     type             = "forward"
+#     target_group_arn = aws_lb_target_group.nextjs_tg.arn
+#   }
+# }
 
 # Route53 Record
 resource "aws_route53_record" "nextjs_domain_record" {
