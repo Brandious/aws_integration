@@ -3,7 +3,7 @@ import TaskCard from "./TaskCard";
 
 export default async function ECSTasks() {
   const BASE_URL =
-    process.env.NEXT_PUBLIC_BASE_URL || "https://dev-next.cloudysky.link";
+    process.env.NEXT_PUBLIC_BASE_URL;
 
   const data = await fetch(`${BASE_URL}/api/awsservice`, { cache: "no-cache" });
   if (!data.ok) {
