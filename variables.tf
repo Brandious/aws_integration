@@ -1,7 +1,7 @@
 # General Variables
 variable "region" {
   description = "The AWS region to deploy infrastructure into"
-  default     = "us-east-1"
+  default     = "eu-central-1"
 }
 
 # Domain & SSL Certificate Variables
