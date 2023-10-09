@@ -7,10 +7,10 @@ terraform {
   }
 
   cloud {
-    organization = "cloudysky"
+    organization = "brandious"
 
     workspaces {
-      name = "nextjs-ecs-workspace"
+      name = "aws_integration"
     }
   }
 }
