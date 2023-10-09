@@ -6,15 +6,15 @@ provider "aws" {
 resource "aws_default_vpc" "main_vpc" {}
 
 resource "aws_default_subnet" "subnet_us_east_1a" {
-  availability_zone = "us-east-1a"
+  availability_zone = "eu-central-1a"
 }
 
 resource "aws_default_subnet" "subnet_us_east_1b" {
-  availability_zone = "us-east-1b"
+  availability_zone = "eu-central-1b"
 }
 
 resource "aws_default_subnet" "subnet_us_east_1c" {
-  availability_zone = "us-east-1c"
+  availability_zone = "eu-central-1c"
 }
 
 # # SSL Certificate
@@ -40,7 +40,7 @@ resource "aws_default_subnet" "subnet_us_east_1c" {
 # }
 
 data "aws_ecr_repository" "nextjs_repo" {
-  name = "nextjs-ecr-repository"
+  name = "aws-nextjs"
 }
 
 # ECS Resources
